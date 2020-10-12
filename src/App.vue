@@ -1,26 +1,75 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Dc Heros {{ herosCount }}</h1>
+  <h2>{{ fullname }}</h2>
+  <h2>{{ fname }} {{ lname }}</h2>
+  <p>{{ randC }}</p>
+  <p>{{ randC }}</p>
+  <p>{{ randC }}</p>
+  <p>{{ randM() }}</p>
+  <p>{{ randM() }}</p>
+  <p>{{ randM() }}</p>
+  <ul>
+    <li v-for="(hero, index) in dcHeros" :key="index">
+      {{ hero.name }}
+    </li>
+  </ul>
+  <form @submit.prevent="addHero">
+    <input v-model.lazy.trim="newHero" placeholder="Type Hero Name Here" />
+    <button type="submit">Add Hero</button>
+  </form>
+  <button @click="setFullName">Set Full name</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  computed: {
+    herosCount() {
+      return this.dcHeros.length;
+    },
+    randC() {
+      return this.dcHeros.length + Math.random();
+    },
+    fullname: {
+      get() {
+        return `Full name is ${this.fname} ${this.lname}`;
+      },
+      set(fullname) {
+        const values = fullname.split(" ");
+        this.fname = values[0];
+        this.lname = values[1];
+      },
+    },
+  },
+  methods: {
+    addHero() {
+      if (this.newHero !== "") {
+        this.dcHeros.push({ name: this.newHero });
+        this.newHero = "";
+      }
+    },
+    randM() {
+      return this.dcHeros.length + Math.random();
+    },
+    setFullName() {
+      this.fullname = "Bitfumes Tutorial";
+    },
+  },
+  data() {
+    return {
+      newHero: "",
+      fname: "Sarthak",
+      lname: "Shrivastava",
+      dcHeros: [
+        { name: "Supergirl" },
+        { name: "Flash" },
+        { name: "Batman" },
+        { name: "Arrow" },
+        { name: "SuperMan" },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
