@@ -1,6 +1,7 @@
 <template>
   <nav class="w-full bg-gradient-to-r from-blue-800 to-blue-600 px-4 py-2">
-    <a class="text-white" href="#"> DC Heros</a>
+    <router-link class="text-white mx-2" to="/dc-heros"> DC Heros</router-link>
+    <router-link class="text-white mx-2" to="/calendar"> Calendar</router-link>
   </nav>
 </template>
 
