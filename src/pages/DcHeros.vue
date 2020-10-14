@@ -18,6 +18,7 @@
         class="border rounded p-1"
         v-model.lazy.trim="newHero"
         placeholder="Type Hero Name Here"
+        ref="newHeroRef"
       />
       <button class="border rounded p-1 ml-1" type="submit">Add Hero</button>
     </form>
@@ -26,6 +27,9 @@
 
 <script>
 export default {
+  mounted() {
+    this.$refs.newHeroRef.focus();
+  },
   computed: {
     herosCount() {
       return this.dcHeros.length;

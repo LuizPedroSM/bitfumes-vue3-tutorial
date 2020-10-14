@@ -7,6 +7,7 @@
           class="w-full h-full p-1"
           :value="text"
           @input="update"
+          ref="markDownRef"
         ></textarea>
       </article>
       <article
@@ -21,29 +22,8 @@
 import marked from "marked";
 import debounce from "../util/mixins/debounce";
 export default {
-  beforeCreate() {
-    console.log("before create");
-  },
-  created() {
-    console.log("created");
-  },
-  beforeMount() {
-    console.log("before Mount");
-  },
   mounted() {
-    console.log("mounted");
-  },
-  beforeUnmount() {
-    console.log("beforeUnmount");
-  },
-  unmounted() {
-    console.log("unmounted");
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate");
-  },
-  updated() {
-    console.log("updated");
+    this.$refs.markDownRef.focus();
   },
   mixins: [debounce],
   data() {
