@@ -20,16 +20,17 @@
 
 <script>
 import marked from "marked";
-import debounce from "../util/mixins/debounce";
+import useDebounce from "../util/position/useDebounce";
 export default {
   mounted() {
+    this.debounce = useDebounce();
     this.$refs.markDownRef.focus();
   },
-  mixins: [debounce],
   data() {
     return {
       text: "",
       timeout: "",
+      debounce: "",
     };
   },
   computed: {
@@ -40,6 +41,7 @@ export default {
   methods: {
     update(e) {
       const task = () => (this.text = e.target.value);
+
       this.debounce(task, 500);
     },
   },
