@@ -5,9 +5,7 @@
     <router-link v-for="item in list" :key="item.to" class="mx-2" :to="item.to">
       {{ item.title }}
     </router-link>
-    <button v-if="!isLoggedIn" class="mx-2" @click="$emit('open-login-modal')">
-      Login
-    </button>
+    <button v-if="!isLoggedIn" class="mx-2" @click="openLogin">Login</button>
     <button v-if="isLoggedIn" class="mx-2" @click="logout">Logout</button>
   </nav>
 </template>
@@ -15,7 +13,6 @@
 <script>
 import firebase from "../util/firebase";
 export default {
-  props: { isLoggedIn: { type: Boolean, required: true } },
   data() {
     return {
       list: [
@@ -25,14 +22,21 @@ export default {
         { title: "Slider", to: "/slider-carousel" },
         { title: "Calculator", to: "/calculator" },
         { title: "Reusable Modal", to: "/reusable-modal" },
+        { title: "Chat", to: "/chat" },
       ],
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    },
   },
   methods: {
     logout() {
       firebase.auth().signOut();
-      // .then((res) => {})
-      // .catch((e) => {});
+    },
+    openLogin() {
+      this.$store.commit("setLoginModal", true);
     },
   },
 };

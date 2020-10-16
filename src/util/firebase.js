@@ -1,5 +1,6 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIRE_BASE_API_KEY,
@@ -11,5 +12,6 @@ const firebaseConfig = {
     appId: process.env.VUE_APP_FIRE_BASE_APP_ID
 };
 firebase.initializeApp(firebaseConfig);
-
+const db = firebase.database();
+export const chatsRef = db.ref("chats");
 export default firebase
