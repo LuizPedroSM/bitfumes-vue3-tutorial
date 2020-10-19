@@ -23,6 +23,7 @@ export default {
         { title: "Calculator", to: "/calculator" },
         { title: "Reusable Modal", to: "/reusable-modal" },
         { title: "Chat", to: "/chat" },
+        { title: "User Crud", to: "/user-crud" },
       ],
     };
   },
