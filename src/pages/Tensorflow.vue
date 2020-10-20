@@ -88,7 +88,7 @@ export default {
     function stopStreaming() {
       const stream = videoRef.value.srcObject;
       const tracks = stream.getTracks();
-      tracks.map((track) => track.stop);
+      tracks.map((track) => track.stop());
       isStreaming.value = false;
     }
     function snapshot() {
