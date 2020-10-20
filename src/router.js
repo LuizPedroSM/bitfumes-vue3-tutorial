@@ -8,6 +8,7 @@ import Calculator from "./pages/Calculator";
 import ReusableModal from "./pages/ReusableModal";
 import Chat from "./pages/Chat";
 import UserCrud from "./pages/UserCrud";
+import Tensorflow from "./pages/Tensorflow";
 import store from "./store/index";
 
 const routes = [
@@ -19,7 +20,8 @@ const routes = [
     {path:"/calculator", component:Calculator},
     {path:"/reusable-modal", component:ReusableModal},
     {path:"/chat", component:Chat, meta: { middleware: 'auth' }},
-    {path:"/user-crud", component:UserCrud}
+    {path:"/user-crud", component:UserCrud},
+    {path:"/tensorflow", component:Tensorflow}
 ]
 
 const router = createRouter({

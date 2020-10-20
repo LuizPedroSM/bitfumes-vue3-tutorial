@@ -24,6 +24,7 @@ export default {
         { title: "Reusable Modal", to: "/reusable-modal" },
         { title: "Chat", to: "/chat" },
         { title: "User Crud", to: "/user-crud" },
+        { title: "Tensorflow", to: "/tensorflow" },
       ],
     };
   },
